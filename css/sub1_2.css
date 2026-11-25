@@ -1,0 +1,90 @@
+@charset "UTF-8";
+/* sub1_2 연혁 콘텐츠 */
+
+
+
+/* 본문 영역 */
+.content_area{
+    padding: 50px 10px 60px;                    /* 위 50px / 좌우 10px / 아래 60px (푸터와 간격) */
+}
+
+/* ===== 연대별 구역 (2010's~ / 2000's / 1990's / 1980's / 1970's) ===== */
+.content_area section{
+    position: relative;                         /* 안의 선, 점, 연대 알약을 이 구역 기준으로 놓기 위해 */
+    margin-bottom: 55px;                        /* 구역과 구역 사이 간격 */
+    padding: 8px 0 10px 25%;                    /* 왼쪽 29% 는 비워 둠 (선 + 연대 알약 자리) */
+}
+.content_area section:first-child{
+    margin-top: 25px;                           /* 슬로건 빨간 줄과 첫 구역 사이 간격 */
+}
+
+/* 세로선 (장식이라 CSS 로 그림) : 기본은 남색, 홀수번째(1,3,5번째) 구역은 빨강 → 빨강/남색이 번갈아 나옴. nth-child(odd) = 새로 쓴 문법: 홀수번째 형제만 고르기 */
+.content_area section::before{
+    content: "";
+    position: absolute;
+    left: 21%;
+    top: 0;
+    bottom: 0;                                  /* top 0 + bottom 0 = 구역 높이만큼 길게 */
+    width: 1px;
+    background: var(--color-point1);
+}
+.content_area section:nth-child(odd)::before{
+    background: var(--color-main);
+}
+
+/* 위·아래 동그란 점 */
+.content_area ul::before,
+.content_area ul::after{
+    content: "";
+    position: absolute;
+    left: 21%;
+    width: 8px;
+    height: 8px;
+    margin-left: -4px;                          /* 점 가운데가 선 위에 오게 반만큼 왼쪽으로 */
+    border-radius: 50%;                         /* 동그랗게 */
+    background: var(--color-point1);
+}
+.content_area ul::before{ top: -4px; }          /* 위쪽 점 */
+.content_area ul::after{ bottom: -4px; }        /* 아래쪽 점 */
+.content_area section:nth-child(odd) ul::before,
+.content_area section:nth-child(odd) ul::after{
+    background: var(--color-main);
+}
+
+/* 연대 알약 (왼쪽, 세로 가운데) */
+.content_area h3{
+    position: absolute;
+    left: 1%;
+    top: 50%;
+    margin-top: -12px;                          /* 알약 높이(24px)의 반 → 세로 가운데 */
+    width: 17%;
+    height: 24px;
+    line-height: 24px;                          /* 글자를 알약 세로 가운데로 */
+    border-radius: 12px;                        /* 알약 모양 */
+    text-align: center;
+    white-space: nowrap;                        /* 글자가 두 줄로 안 꺾이게 */
+    font-size: var(--font-12-size);
+    font-weight: 700;
+    color: #fff;
+    background: var(--color-point1);
+    padding: 5px 0;
+}
+.content_area section:nth-child(odd) h3{
+    background: var(--color-main);
+}
+
+/* 연혁 목록 */
+.content_area li{
+    margin-bottom: 6px;                         /* 줄 사이 간격 */
+    font-size: var(--font-12-size);
+    line-height: 1.5;
+    color: var(--color-font1);
+    word-break: break-all;
+}
+.content_area li:last-child{
+    margin-bottom: 0;
+}
+.content_area li strong{
+    font-weight: 700;                           /* 시안의 굵은 줄 */
+    color: var(--color-point2);
+}

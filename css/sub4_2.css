@@ -1,0 +1,223 @@
+@charset "UTF-8";
+
+.content_area {
+    padding: 50px 10px 60px;
+}
+
+
+/* ---------- 공통 소제목 h3 (빨간 세로막대) ---------- */
+.content_area h3 {
+    margin-bottom: 30px;
+    padding-left: 10px;
+    border-left: 3px solid var(--color-main);
+    font-size: var(--font-18-size);
+    font-weight: 700;
+    line-height: 1.25;
+}
+/* section + section : 앞에 section이 있는 section(= 두 번째부터)만 골라서 위쪽 간격을 준다 */
+.content_area section + section {
+    margin-top: 45px;
+}
+
+
+/* ---------- 정의 ---------- */
+.content_area .definition p {
+    padding: 18px 17px 19px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
+    background: #fff;
+    font-size: var(--font-14-size);
+    line-height: 1.8;
+    color: #333;
+}
+/* linear-gradient : 색이 위에서 아래로 변하는 배경.
+   transparent 58% 까지는 투명, 그 아래만 분홍색이라 글자 아래쪽에 형광펜을 칠한 것처럼 보인다 */
+.content_area .definition mark {
+    background: linear-gradient(transparent 58%, #F8CFCB 58%);
+    font-weight: 700;
+    color: inherit;                 /* mark 의 기본 노란 글자색 대신 주변 글자색을 그대로 쓴다 */
+}
+
+
+/* ---------- 선정기준 (가~마 5줄) ---------- */
+.content_area .criteria li {
+    border: 1px solid #f3cfcb;
+    border-top: 2px solid var(--color-main);   /* 위쪽만 빨갛고 두껍게 */
+    border-radius: 3px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    background: #fff;
+}
+/* li + li : 앞에 li가 있는 li(= 두 번째 카드부터)만 골라서 위쪽 간격을 준다 */
+.content_area .criteria li + li {
+    margin-top: 9px;
+}
+/* display: flex 로 동그라미 글자와 설명을 가로로 나란히 놓고, align-items: center 로 세로 가운데를 맞춘다 */
+.content_area .criteria dl {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    padding: 14px 15px;
+}
+.content_area .criteria dt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;                 /* 설명이 길어도 동그라미가 찌그러지지 않게 */
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #FCE9E7;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--color-main);
+}
+.content_area .criteria dd {
+    margin: 0;
+    font-size: var(--font-14-size);
+    line-height: 1.6;
+    color: #333;
+}
+
+
+/* ---------- 선정현황 (기업형의 표를 모바일에서는 카드로 보여준다) ---------- */
+.content_area .board {
+    border-top: 2px solid var(--color-main);
+    border-radius: 3px 3px 0 0;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
+    background: #fff;
+    overflow: hidden;
+}
+/* display: block : 표 태그(table, tbody, tr, th, td)를 보통 상자처럼 바꿔서 위에서 아래로 쌓이게 한다 */
+.content_area .board table,
+.content_area .board tbody,
+.content_area .board tr,
+.content_area .board th,
+.content_area .board td {
+    display: block;
+}
+/* 맨 위 제목줄(thead)은 카드에서 필요 없으니 눈에만 안 보이게 한다 (화면 읽기 프로그램은 읽을 수 있게 display: none 은 쓰지 않는다) */
+.content_area .board thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+
+/* 한 줄(tr)이 카드 한 장.
+   display: grid : 칸을 바둑판처럼 나눈다. 1fr 1fr 은 같은 너비 두 칸
+   grid-template-areas : 아래처럼 자리 이름을 그려 놓고 각 칸을 그 자리에 앉힌다
+       no   status
+       name name
+       crit reg                                                      */
+.content_area .board tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "no   status"
+        "name name"
+        "crit reg";
+    gap: 9px 0;
+    padding: 14px 15px 15px;
+    border-bottom: 1px solid #eee;
+}
+.content_area .board th,
+.content_area .board td {
+    padding: 0;
+    text-align: left;
+    font-weight: 400;
+}
+/* 일련번호 (th) */
+.content_area .board th {
+    grid-area: no;
+    align-self: center;
+    font-size: var(--font-16-size);
+    font-weight: 700;
+    color: var(--color-main);
+}
+/* nth-child(2) : 한 줄에서 두 번째 칸 = 사업명 */
+.content_area .board td:nth-child(2) {
+    grid-area: name;
+    font-size: var(--font-16-size);
+    font-weight: 700;
+    line-height: 1.4;
+    color: #222;
+}
+/* nth-child(3) : 세 번째 칸 = 선정기준 */
+.content_area .board td:nth-child(3) {
+    grid-area: crit;
+    font-size: var(--font-14-size);
+    font-weight: 500;
+    color: #222;
+}
+/* nth-child(4) : 네 번째 칸 = 진행사항 (오른쪽 위로 보낸다) */
+.content_area .board td:nth-child(4) {
+    grid-area: status;
+    justify-self: end;
+}
+.content_area .board td:nth-child(4) span {
+    display: inline-block;
+    padding: 2px 11px;
+    border-radius: 15px;
+    background: #ECECF4;
+    font-size: 13px;
+    color: #444;
+}
+/* nth-child(5) : 다섯 번째 칸 = 사업내역서 등록 (○ 는 빨간색) */
+.content_area .board td:nth-child(5) {
+    grid-area: reg;
+    justify-self: end;
+    font-size: var(--font-14-size);
+    font-weight: 700;
+    color: var(--color-main);
+}
+/* ::before 의 content : HTML에 없는 글자를 CSS로 앞에 끼워 넣는다.
+   attr(data-label) 은 HTML 칸에 적어 둔 data-label="선정기준" 글자를 그대로 가져온다 */
+.content_area .board td:nth-child(3)::before,
+.content_area .board td:nth-child(5)::before {
+    content: attr(data-label);
+    margin-right: 6px;
+    font-weight: 400;
+    color: #555;
+}
+
+/* 숨겨 둔 6~21번 (처음에는 안 보이고, JS 의 slideToggle 이 눌렀을 때 펼쳐준다) */
+.content_area .board .more {
+    display: none;
+}
+
+/* 전체 사업 보기 버튼 */
+.content_area .board .more_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    width: 100%;
+    height: 50px;
+    border: 0;
+    border-top: 2px solid var(--color-main);
+    background: #fff;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    color: #222;
+    cursor: pointer;
+}
+.content_area .board .more_btn i {
+    font-size: 13px;
+    transition: transform .3s ease;     /* 화살표가 돌아갈 때 부드럽게 */
+}
+/* 버튼에 on 이 붙으면(열렸을 때) 화살표를 180도 돌려서 위쪽(∧)으로 */
+.content_area .board .more_btn.on i {
+    transform: rotate(180deg);
+}
+
+
+/* ---------- 탭(sub_menu) 3개 너비 보정 ----------
+   탭이 3개인데 한 칸이 25%라서 오른쪽이 비어 보이는 문제를 막는다.
+   (sub_common.css 는 건드리지 않고 이 파일에서 덮어쓴다) */
+.sub_menu ul li {
+    width: 33.33%;
+}

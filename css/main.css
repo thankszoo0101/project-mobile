@@ -1,0 +1,211 @@
+@charset "UTF-8";
+/* index css : 320px 기준, width/height 는 px 대신 % 사용 (이미지 높이는 auto 로 비율에 맞게 자동) */
+
+/* ===== 메인 비주얼 ===== */
+/* 높이를 따로 정하지 않음 → 이미지(width:100%, height:auto)가 가로에 맞춰 커지면 높이도 자동으로 맞춰짐 */
+.visual img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+/* 비주얼 글자: 슬라이드(position:relative)를 기준으로 사진 위에 겹쳐 올림 */
+.visual .swiper-slide p{
+    position: absolute; /* 사진 위로 띄움 */
+    left: 15px;
+    right: 15px;
+    bottom: 100px; /* 아래에서 100px 위 */
+    color: #fff;
+    font-size: var(--font-14-size);
+    line-height: 1.5;
+    text-shadow: 1px 1px 4px rgba(0,0,0,.6); /* 사진이 밝아도 글자가 읽히게 그림자 */
+}
+.visual .swiper-slide p span{
+    display: block; /* 강조 글자는 윗줄에 따로 */
+    font-size: var(--font-18-size);
+    font-weight: 700;
+}
+.visual .swiper-pagination-bullet-active{
+    background: var(--color-main);
+}
+
+/* ===== 본문 공통 ===== */
+#content section{
+    padding: 40px 15px; /* 위아래 40px, 좌우 15px */
+}
+#content .eng{
+    font-size: var(--font-12-size);
+    color: var(--color-font3);
+    margin-bottom: 15px;
+}
+#content h3{
+    margin: 10px 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-point2);
+    margin-bottom: 10px;
+}
+#content section > p:not(.eng){
+    font-size: var(--font-14-size);
+    color: var(--color-font1);
+    line-height: 1.4;
+}
+/* 자세히보기 버튼: 가로 28%, 세로는 padding(%) 으로 약 44px 터치 크기 확보 */
+#content .more{
+    display: block;
+    width: 30%;
+    margin-top: 20px;
+    padding: 10px 0; /* 위아래 14px 로 높이(약 44px) 만듦 */
+    border-radius: 30px;
+    background: var(--color-main);
+    color: #fff;
+    font-size: var(--font-12-size);
+    font-weight: 500;
+    text-align: center;
+}
+
+/* ===== 1. 기관소개 ===== */
+.about h3{
+    color: var(--color-main);
+}
+.about .swiper-container{
+    margin-top: 20px;
+}
+.about .gallery-thumbs{
+    margin-top: 10px; /* 큰 사진과 작은 사진 사이 간격 */
+}
+.about .swiper-slide img{
+    display: block;
+    width: 100%;
+    height: auto; /* 사진 비율대로 높이가 자동으로 정해짐 */
+}
+.about .gallery-thumbs .swiper-slide{
+    filter: brightness(50%); /* 선택 안 된 작은 사진은 어둡게 */
+    cursor: pointer;
+}
+.about .gallery-thumbs .swiper-slide-thumb-active{
+    filter: brightness(100%); /* 선택된 작은 사진은 밝게 */
+}
+.about .swiper-button-prev,
+.about .swiper-button-next{
+    --swiper-navigation-size: 24px; /* 화살표 크기 (기본은 44px) */
+    color: rgba(255,255,255,.7);    /* 흰색 + 투명도 70% */
+    text-shadow: 0 0 4px rgba(0,0,0,.4); /* 밝은 사진 위에서도 보이게 */
+}
+
+/* ===== 2. 사업안내 ===== */
+.biz{
+    background: url(../images/main/business1x2.jpg) no-repeat center / cover; /* 배경이미지를 칸에 꽉 채움 */
+}
+/* 위쪽 '#content section' 의 좌우 여백을 이기려고 앞에 #content 를 붙여 선택자를 더 세게 함 */
+#content .biz{
+    padding-left: 0;
+    padding-right: 0;
+}
+.biz .eng,
+.biz h3,
+.biz > p{
+    padding: 0 15px;
+}
+.biz ul{
+    margin-top: 24px;
+}
+.biz li a{
+    display: block;
+    position: relative;
+    width: 78%;
+    padding: 19px;
+    color: #fff;
+}
+.biz .b1 a{
+    background: var(--color-point1);
+    border-radius: 0 45px 45px 0;
+}
+.biz .b2 a{
+    margin: 20px 0 0 auto; /* 오른쪽 끝으로 붙임 */
+    padding-left: 38px;
+    background: var(--color-main);
+    border-radius: 45px 0 0 45px;
+    text-align: right;
+}
+.biz strong{
+    display: block;
+    font-size: var(--font-16-size);
+}
+.biz li span{
+    display: block;
+    margin-top: 6px;
+    font-size: var(--font-12-size);
+    line-height: 1.3;
+}
+.biz li i{
+    position: absolute;
+    top: 50%;
+    margin-top: -12px; /* 화살표를 세로 가운데로 */
+}
+.biz .b1 i{ right: 10px; }
+.biz .b2 i{ left: 10px; }
+
+/* ===== 3. ESG ===== */
+.esg .swiper-container{
+    margin: 20px -15px 0; /* 섹션 좌우 여백(15px)만큼 빼서 화면 끝까지 */
+    padding: 0 0 10px;
+}
+.esg .swiper-slide{
+    width: 62%; /* 카드 폭 62% → 양옆 카드가 살짝 보임 */
+}
+.esg .swiper-slide a{
+    display: block;
+    padding-bottom: 14px;
+    background: #fff;
+    box-shadow: var(--box-shadow1);
+    text-align: center;
+}
+.esg .swiper-slide div img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.esg strong{
+    display: block;
+    margin: 10px 0 6px;
+    font-size: var(--font-16-size);
+}
+.esg li span{
+    display: block;
+    padding: 0 10px;
+    font-size: var(--font-12-size);
+    color: var(--color-font2);
+    line-height: 1.4;
+}
+
+/* ===== 4. 정보공개 (어두운 '배경 이미지') ===== */
+.info{
+    background: var(--color-point2) url(../images/main/information1x2.jpg) no-repeat center / cover; /* 이미지가 아직 없거나 안 불러와져도 흰 글자가 보이도록 아래에 깔아둔 임시 색. 이미지를 넣은 뒤 지워도 됨 */
+}
+/* 위쪽 공통 글자색(#content h3 등)을 이기려고 앞에 #content 를 붙임 */
+#content .info .eng,
+#content .info h3,
+#content section.info > p{
+    color: #fff;
+}
+.info ul{
+    margin-top: 35px;
+}
+.info li{
+    margin-bottom: 14px;
+}
+.info li a{
+    display: flex; /* 아이콘, 글자, 화살표를 가로로 한 줄 */
+    align-items: center;
+    padding: 14px 37px; /* 높이는 padding 으로 만들어 44px 이상 */
+    gap: 5px;
+    border-radius: 30px;
+    background: rgba(255,255,255,.2);
+    color: #fff;
+    font-size: var(--font-16-size);
+    backdrop-filter: blur(8px);
+}
+.info li span{
+    flex: 1; /* 남는 칸을 모두 차지해서 오른쪽 화살표를 끝으로 밈 */
+    margin-left: 16px;
+}

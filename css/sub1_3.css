@@ -1,0 +1,122 @@
+@charset "UTF-8";
+/* sub1_3 CI 콘텐츠 */
+
+
+/* 본문 영역 */
+.content_area{
+    padding: 50px 10px 60px;                    /* 위 50px / 좌우 10px / 아래 60px (푸터와 간격) */
+    text-align: center;
+}
+
+/* ===== 로고 2개 (국문형 / 국영문형) ===== */
+.logo_list{
+    display: flex;                              /* 카드 2개를 가로로 한 줄 */
+    justify-content: space-between;
+    width: 92%;
+    margin: 30px auto 0;                        /* 위쪽 30px 더해서 시안처럼 간격 확보 */
+}
+.logo_list li{
+    width: 49%;                                 /* 2칸 (사이 간격 2%) */
+}
+.logo_box{
+    display: flex;                              /* 안의 로고를 카드 가운데에 놓기 */
+    align-items: center;                        /* 세로 가운데 */
+    justify-content: center;                    /* 가로 가운데 */
+    aspect-ratio: 250 / 95;                     /* 새로 쓴 문법: 가로:세로 비율을 고정 → 화면이 커지면 카드 높이도 같이 커져서 로고가 박스 밖으로 안 나옴 */
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(0,0,0,.1);      /* 피그마 그림자: Y 4 / Blur 16 / 투명도 10% */
+}
+.logo_box img{
+    width: 72%;                                 /* 카드 가로의 72% 만큼 로고 */
+    height: auto;                               /* 로고가 찌그러지지 않게 비율대로 자동 */
+}
+.logo_list p{
+    margin-top: 10px;
+    font-size: var(--font-12-size);
+    font-weight: 600;
+    color: var(--color-font1);
+}
+
+/* ===== 시그니처 ===== */
+.signature_area{
+    margin:50px 0;
+}
+.signature_area h3{
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--color-main);                   /* '시그니처' 빨간 굵은 글자 */
+}
+.signature_area h3 span{
+    display: block;                             /* 영어 부제를 아랫줄로 */
+    margin-top: 4px;
+    font-size: var(--font-16-size);
+    font-weight: 300;
+    color: var(--color-font2);
+}
+.signature_area p{
+    margin: 10px 3% 0;
+    font-size: var(--font-14-size);
+    line-height: 1.6;
+    color: var(--color-font1);
+    word-break: break-all;
+}
+/* 문단 아래 빨간 짧은 가로선 (장식이라 CSS 로 그림) */
+.signature_area::after{
+    content: "";
+    display: block;
+    width: 11%;
+    height: 2px;
+    margin: 25px auto 0;
+    background: var(--color-main);
+}
+
+/* ===== KIDP 컬러 시스템 ===== */
+.color_area{
+    margin-top: 25px;
+}
+.color_area h3{
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--color-point2);
+    margin-bottom: 30px;
+}
+.color_list{
+    display: flex;                              /* 빨강 / 검정 2칸 가로 배치 */
+    margin-top: 15px;
+}
+.color_list li{
+    width: 50%;
+}
+.color_chip{
+    width: 59%;                                 /* 칸(50%) 안에서 색 네모의 가로 */
+    height: 50px;
+    margin: 0 auto;                             /* 가운데 정렬 */
+}
+.color_red .color_chip{
+    background: var(--color-main);              /* #DE2718 */
+}
+.color_black .color_chip{
+    background: var(--color-point2);            /* #221814 */
+}
+.color_code{
+    margin-top: 8px;
+    font-size: var(--font-14-size);
+    font-weight: 700;
+    color: var(--color-font1);
+}
+.color_list strong{
+    display: block;
+    margin-top: 4px;
+    font-size: var(--font-18-size);
+    font-weight: 700;
+    color: var(--color-point2);
+}
+.color_list strong span{
+    color: var(--color-main);                   /* 'Red' 글자만 빨강 */
+}
+.color_rgb{
+    margin-top: 4px;
+    font-size: var(--font-14-size);
+    font-weight: 600;
+    color: var(--color-font1);
+}

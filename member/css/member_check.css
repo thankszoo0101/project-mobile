@@ -1,0 +1,170 @@
+@charset "UTF-8";
+
+body {
+    background-color: #eee;
+    font-size: 16px;
+}
+
+/* 로고 : 이미지는 2배 크기(logoX2.png)로 만들고 보여줄 때는 절반(182 x 32)으로 줄인다 (login.css 와 같은 방식) */
+.logo {
+    margin: 30px auto 0;
+    display: block;
+    width: 182px;
+    height: 32px;
+    background: url(../../images/common/logoX2.png) center no-repeat;
+    background-size: 182px 32px;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+/* width: 750px -> 94% : 화면 크기에 맞춰 늘고 줄어든다
+   box-sizing: border-box : 안쪽 여백(padding)을 94% 안에 포함시킨다 */
+#content {
+    width: 94%;
+    margin: 30px auto;
+    background: #fff;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 30px 10px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+.member_tab {
+    padding: 30px 0;
+    border-top: 1px solid var(--color-font1);
+}
+
+.member_tab a {
+    font-size: var(--font-24-size);
+    padding: 10px;
+    margin: 0 10px;
+    color: var(--color-font3);
+}
+
+.member_tab a.on {
+    color: var(--color-main);
+    border-bottom: 2px solid var(--color-main);
+    font-weight: bold;
+}
+
+.member_tab span {
+    font-size: var(--font-24-size);
+    padding: 10px;
+    margin: 0 10px;
+    color: var(--color-main);
+    font-weight: bold;
+}
+
+.join {
+    text-align: left;
+    position: relative;
+}
+
+.join h3 {
+    font-size: var(--font-16-size);
+    margin: 25px 0 0;
+    color: var(--color-font1);
+}
+
+.join h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-font1);
+    text-align: center;
+    position: relative;
+}
+
+
+/* 약관 글상자 : 안에서만 스크롤 되는 상자. 글자는 모바일에 맞게 줄이고 높이는 조금 키웠다 */
+.join .policy {
+    padding: 10px;
+    overflow-y: scroll;
+    height: 120px;
+    margin: 15px 0;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-size: var(--font-14-size);
+    line-height: 1.6em;
+}
+
+.join .check {
+    color: var(--color-font1);
+    margin: 15px 0 35px;
+    font-size: var(--font-14-size);
+    word-break: keep-all;           /* 글자가 줄 끝에서 단어 중간에 끊기지 않게 */
+}
+
+/* display: flex : 두 버튼을 가로로 나란히 놓는다 (gap : 버튼 사이 간격) */
+.join .button {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* flex: 1 : 두 버튼이 남은 너비를 똑같이 나눠 가진다 (width: 300px -> 고정값 없음) */
+.join .button .ok,
+.join .button button,
+.join .allcheck {
+    display: block;
+    flex: 1;
+    box-sizing: border-box;
+    height: 54px;
+    line-height: 52px;
+    padding: 0;
+    border: 1px solid var(--color-main);
+    border-radius: 10px;
+    text-decoration: none;
+    background: var(--color-main);
+    color: #fff;
+    font-size: var(--font-16-size);
+    cursor: pointer;
+    margin: 0;
+}
+
+.join .button .cancel {
+    display: block;
+    flex: 1;
+    line-height: 24px;
+    padding: 8px 0;
+    border: none;
+    background: var(--color-font3);
+    color: #fff;
+    font-size: var(--font-16-size);
+    cursor: pointer;
+}
+
+.join .allcheck {
+    background: transparent;
+    border: 1px solid var(--color-main);
+    color: var(--color-main);
+}
+
+
+/* 체크박스 UI변경 */
+input[type=checkbox]+label::before {
+    /* + => 친구라는 의미 */
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: 1px solid var(--color-font3);
+    content: '';
+    margin: 0px 10px -6px 0px;
+    border-radius: 10px;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+input[type=checkbox]+label {
+    cursor: pointer;
+}
+
+/* 체크박스타입의 인풋이 :checked  => 체크되면 + 라벨의 비포*/
+input[type=checkbox]:checked+label::before {
+    background: #fff url(../images/checked_bg.png) center center no-repeat;
+    border: 1px solid transparent;
+}

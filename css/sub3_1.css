@@ -1,0 +1,195 @@
+@charset "UTF-8";
+
+.content_area {
+    padding: 50px 10px 60px;
+}
+
+
+/* ---------- 소개 문구 + 일러스트 ---------- */
+.content_area .intro p {
+    text-align: center;
+    font-size: var(--font-16-size);
+    line-height: 1.5;
+}
+.content_area .intro strong {
+    color: var(--color-main);
+    font-weight: 700;
+}
+.content_area .intro_img {
+    margin-top: 18px;
+}
+.content_area .intro_img img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+/* ---------- 공통 소제목 h3 (빨간 세로막대) ---------- */
+.content_area h3 {
+    margin-bottom: 30px;
+    padding-left: 10px;
+    border-left: 3px solid var(--color-main);
+    font-size: var(--font-18-size);
+    font-weight: 700;
+    line-height: 1.2;
+}
+.content_area h3 span {
+    font-size: var(--font-14-size);
+    font-weight: 400;
+}
+
+
+/* ---------- 사회적가치 비전 ---------- */
+.content_area .vision {
+    margin-top: 40px;
+}
+.content_area .vision p {
+    padding: 22px 15px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.14);
+    text-align: center;
+    font-size: var(--font-16-size);
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+
+/* ---------- 기본방향 및 목표 (카드 3개) ---------- */
+.content_area .goal {
+    margin-top: 45px;
+}
+.content_area .goal_list li {
+    border: 1px solid #eee;
+    border-radius: 3px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.14);
+    overflow: hidden;       /* 빨간 띠가 카드 둥근 모서리 밖으로 안 나가게 */
+}
+/* li + li : 앞에 li가 있는 li(= 두 번째, 세 번째 카드)만 골라서 위쪽 간격을 준다 */
+.content_area .goal_list li + li {
+    margin-top: 12px;
+}
+.content_area .goal_list dl {
+    margin: 0;
+}
+.content_area .goal_list dt {
+    padding: 17px 10px 15px;
+    text-align: center;
+    font-size: var(--font-16-size);
+    font-weight: 500;
+    line-height: 1.4;
+}
+.content_area .goal_list dt i {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 23px;
+    color: var(--color-main);
+}
+.content_area .goal_list dd {
+    margin: 0;
+    padding: 13px 10px;
+    background: var(--color-main);
+    color: #fff;
+    text-align: center;
+    font-size: var(--font-16-size);
+    font-weight: 700;
+}
+
+/* 장식용 위쪽 화살표 아이콘 */
+.content_area .arrow_icon {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 32px;
+    color: var(--color-main);
+}
+
+
+/* ---------- 추진전략 및 전략과제 (details / summary) ---------- */
+.content_area .strategy {
+    margin-top: 45px;
+}
+.content_area .strategy_list details {
+    border: 1px solid #f3cfcb;
+    border-radius: 3px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+/* details + details : 두 번째 묶음부터 위쪽 간격 */
+.content_area .strategy_list details + details {
+    margin-top: 12px;
+}
+
+/* 눌러서 열고 닫는 분홍 제목 부분 */
+.content_area .strategy_list summary {
+    position: relative;             /* 오른쪽 화살표(::after)를 summary 안에서 위치시키기 위해 */
+    padding: 15px 40px 15px 14px;   /* 오른쪽은 화살표 자리를 비워둔다 */
+    background: #FCE9E7;
+    list-style: none;               /* 브라우저 기본 삼각형 숨기기 */
+    cursor: pointer;
+}
+/* 사파리(아이폰)는 위 list-style만으로 안 없어져서 따로 숨긴다 */
+.content_area .strategy_list summary::-webkit-details-marker {
+    display: none;
+}
+.content_area .strategy_list summary span {
+    display: block;
+    font-size: var(--font-14-size);
+    font-weight: 700;
+    color: var(--color-main);
+}
+.content_area .strategy_list summary strong {
+    display: block;
+    margin-top: 4px;
+    font-size: var(--font-16-size);
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+/* 오른쪽 화살표 : 글자가 아니라 테두리 두 줄(오른쪽, 아래)로 ㄱ 모양을 만들고 돌려서 ∨ 로 만든다 */
+.content_area .strategy_list summary::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    width: 8px;
+    height: 8px;
+    margin-top: -6px;
+    border-right: 2px solid var(--color-main);
+    border-bottom: 2px solid var(--color-main);
+    transform: rotate(45deg);       /* 45도 돌리면 ∨ 모양 */
+}
+/* details 에 open 이 붙으면(열렸을 때) 화살표를 ∧ 로 뒤집는다 */
+.content_area .strategy_list details[open] summary::after {
+    margin-top: -1px;               /* 돌렸을 때 눈으로 가운데로 보이게 위치 보정 */
+    transform: rotate(-135deg);     /* -135도 돌리면 ∧ 모양 */
+}
+
+/* 열렸을 때 보이는 전략과제 목록 */
+.content_area .strategy_list ul {
+    padding: 5px 14px;
+    background: #fff;
+}
+.content_area .strategy_list li {
+    position: relative;             /* 빨간 > 모양(::before)의 기준 */
+    padding: 10px 0 10px 16px;
+    font-size: var(--font-14-size);
+    line-height: 1.5;
+}
+/* li + li : 두 번째 항목부터 위쪽에 얇은 선 */
+.content_area .strategy_list li + li {
+    border-top: 1px solid #eee;
+}
+/* 빨간 > 모양 : 테두리 위, 오른쪽 두 줄을 45도 돌려서 > 로 만든다 */
+.content_area .strategy_list li::before {
+    content: "";
+    position: absolute;
+    top: 17px;
+    left: 2px;
+    width: 6px;
+    height: 6px;
+    border-top: 2px solid var(--color-main);
+    border-right: 2px solid var(--color-main);
+    transform: rotate(45deg);
+}
+.sub_menu ul li {width: 33.33%;}

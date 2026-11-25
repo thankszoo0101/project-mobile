@@ -1,0 +1,181 @@
+@charset "UTF-8";
+/* sub1_4 오시는길 콘텐츠 */
+
+
+/* 본문 영역 */
+.content_area{
+    padding: 50px 10px 60px;                    /* 위 50px / 좌우 10px / 아래 60px (푸터와 간격) */
+}
+
+/* ===== 성남 / 양산 버튼 ===== */
+.location_tab ul{
+    display: flex;                              /* 버튼 2개를 가로로 한 줄 */
+    justify-content: space-between;
+    width: 92%;
+    margin: 0 auto;
+}
+.location_tab li{
+    width: 49%;                                 /* 2칸 (사이 간격 2%) */
+}
+.location_tab a{
+    display: flex;                              /* 글자를 버튼 가운데에 놓기 */
+    align-items: center;                        /* 세로 가운데 */
+    justify-content: center;                    /* 가로 가운데 */
+    height: 50px;
+    padding: 0 4px;
+    border: 1px solid #D9D9D9;
+    border-radius: 25px;                        /* 높이(50px)의 반 → 알약 모양 */
+    background: #fff;
+    text-align: center;
+    line-height: 1.3;
+    font-size: var(--font-12-size);
+    font-weight: 600;
+    color: var(--color-font1);
+    transition: all .5s ease-out;               /* 색이 바뀔 때 0.5초 동안 부드럽게 */
+}
+/* 지금 보고 있는 지도 버튼 = 빨강 */
+.location_tab a.active{
+    border-color: var(--color-main);
+    background: var(--color-main);
+    color: #fff;
+}
+
+/* ===== 성남 / 양산 칸 바꾸기 ===== */
+/* display:none 으로 숨기면 지도가 깨져서, 높이 0 + 안 보이게(visibility) 로 숨김 */
+.location_panel{
+    height: 0;
+    overflow: hidden;                           /* 넘치는 부분 잘라내기 */
+    visibility: hidden;
+}
+.location_panel.on{
+    height: auto;
+    overflow: visible;
+    visibility: visible;
+}
+
+/* ===== 지도 ===== */
+#map1,
+#map2{
+    width: 100%;
+    height: 350px;
+    margin-top: 25px;
+    border: 3px solid #f8f8f8;
+    border-radius: 8px;
+    background: #E4E4E4;                        /* 지도가 뜨기 전 회색 자리 */
+}
+
+/* ===== 주소 / 전화번호 ===== */
+.location_panel address{
+    margin-top: 25px;
+    font-style: normal;                         /* address 는 기본이 기울임체라서 바로잡기 */
+    text-align: center;
+}
+.location_panel address p{
+    margin-bottom: 6px;
+    font-size: var(--font-14-size);
+    line-height: 1.6;
+    color: var(--color-font1);
+    word-break: break-all;
+}
+.location_panel address strong{
+    margin-right: 6px;
+    font-weight: 700;
+    color: var(--color-main);                   /* 'Address.' 'TEL.' 빨강 */
+}
+
+/* ===== 지하철 / 대중교통 / 자차 ===== */
+.subway,
+.bus,
+.car{
+    padding: 30px 3%;
+    border-bottom: 1px solid #D9D9D9;
+}
+.subway{
+    margin-top: 25px;
+    border-top: 1px solid #D9D9D9;              /* 주소 아래 첫 구분선 */
+}
+.location_panel h4{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 18px;
+    font-size: var(--font-18-size);
+    font-weight: 700;
+    color: var(--color-point2);
+}
+.location_panel h4 i{
+    margin-right: 10px;
+    font-size: var(--font-16-size);
+    color: var(--color-font1);
+}
+.subway p,
+.bus li{
+    font-size: var(--font-14-size);
+    line-height: 1.7;
+    color: var(--color-font2);
+    word-break: break-all;
+}
+.bus li{
+    margin-bottom: 6px;
+}
+.bus li:last-child{
+    margin-bottom: 0;
+}
+
+/* 버스 종류 알약 (지선 / 간선 / 광역) */
+.bus li span{
+    display: inline-block;
+    width: 14%;
+    height: 22px;
+    margin-right: 8px;
+    border: 2px solid;                          /* 선 색은 아래 종류별로 지정 */
+    border-radius: 11px;
+    vertical-align: middle;                     /* 숫자 글자와 세로 가운데 맞추기 */
+    text-align: center;
+    line-height: 18px;
+    font-size: var(--font-12-size);
+    font-weight: 700;
+}
+.bus .bus_local{color: #53B332; border-color: #53B332;}   /* 지선 초록 */
+.bus .bus_main{color: #0068B7; border-color: #0068B7;}    /* 간선 파랑 */
+.bus .bus_wide{color: #E60012; border-color: #E60012;}    /* 광역 빨강 */
+
+/* 지하철 노선 동그라미 (수인분당선) */
+.subway_badge{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 8%;
+    aspect-ratio: 1 / 1;                        /* 새로 쓴 문법: 가로:세로 1:1 → 화면이 커져도 동그라미 유지 */
+    margin-right: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+    font-size: var(--font-12-size);
+    font-weight: 700;
+    color: #fff;
+    background: #ECA300;                        /* 수인분당선 노랑 */
+}
+
+/* 자차 : 방면 이름(왼쪽) + 길 안내(오른쪽) */
+.car{border-bottom: 0;}
+.car div{
+    display: flex;
+    margin-bottom: 12px;
+}
+.car div:last-child{
+    margin-bottom: 0;
+}
+.car dt{
+    width: 18%;
+    font-size: var(--font-14-size);
+    line-height: 1.7;
+    font-weight: 700;
+    color: var(--color-point2);
+}
+.car dd{
+    width: 82%;
+    font-size: var(--font-14-size);
+    line-height: 1.7;
+    color: var(--color-font2);
+    word-break: break-all;
+}

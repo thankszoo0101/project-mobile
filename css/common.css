@@ -1,0 +1,249 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Roboto:wght@100;300;400;500;700&display=swap');
+
+/* font-family: "Noto Sans KR", sans-serif; */
+/* font-family: "Roboto", sans-serif; */
+
+:root{
+    --color-main: #DE2718;
+    --color-point1: #030027;
+    --color-point2: #221814;
+    --color-sub1: #DEDEDE;
+    --color-sub2: #E2D4BA;
+    --color-font1: #333;
+    --color-font2: #666;
+    --color-font3: #999;
+
+    /* --font-h2-size:; 
+    --font-h3-size:; 
+    --font-h4-size:; 
+    --font-h5-size:;
+    --font-h6-size:;
+    --font-gnb-size:; */
+    --font-18-size :1.29rem ; /* 18px */
+    --font-16-size :1.14rem ; /* 16px */
+    --font-14-size :1rem ; /* 14px */
+    --font-12-size :0.86rem ; /* 12px */
+
+    --box-shadow1 : 1px 1px 10px 1px rgba(0,0,0,.3);
+    --box-shadow2 : 2px 2px 10px 2px rgba(0,0,0,.4);
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+
+/* 모바일 코딩 필수 공통영역 */
+* {
+ margin:0;
+ padding:0;
+ -webkit-text-size-adjust:none; }
+html{font-size: 14px;}
+body {
+ color:#333;
+ font-family: "Noto Sans KR", sans-serif;}
+img, fieldset { border:0; vertical-align:top }
+ul, ol, li, dl { list-style:none; }
+h1, h2, h3, h4, h5, h6 {
+ font-size:100%;
+ font-weight:normal; }
+hr { display:none; }
+a { color:#333; text-decoration: none ;display: block; }
+em, i, address {
+ font-style:normal;
+ font-weight:normal; }
+legend, caption {
+ display:none;
+ clear:both; }
+input, textarea, select, button, table {
+ font-size:inherit;
+ font-family:inherit;
+ line-height:inherit; }
+section, nav, article, aside, hgroup, header, footer { display:block }
+textarea, input {
+ border-radius:1px;}
+textarea { resize:none; }
+label { cursor:pointer; }
+table{border-collapse: collapse;}
+.hidden,#skipNav{display: block; position: absolute; left:-1000%;top:0; width: 1px; height: 1px; overflow: hidden; color: #fff}
+
+
+/* 스플래시 스크린 전체 화면 설정 */
+#splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff; /* 배경 색상 */
+  display: none; /* 기본 상태는 숨김 및 투명 처리 */
+  opacity: 0;
+  visibility: hidden;
+  z-index: 9999; /* 최상단에 배치 */
+  transition: opacity 0.5s ease-out, visibility 0.5s; /* 사라질 때 애니메이션 */
+}
+
+/* 첫 방문자에게 스플래시를 노출할 때 붙일 클래스 */
+#splash-screen.active {
+  display: flex;          /* 원래 가지고 있던 flex 정렬 활성화 */
+  justify-content: center;
+  align-items: center;
+  opacity: 1;             /* 투명도 원복 */
+  visibility: visible;    /* 가시성 원복 */
+}
+
+/* 스플래시 이미지 크기 및 애니메이션 (선택) */
+.splash-logo {
+  width: 100%; /* 이미지 크기 조절 */
+  height: auto;
+}
+
+/* 스플래시가 끝났을 때 적용할 클래스 */
+#splash-screen.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+
+
+/* 전체 공통 */
+#wrap{ width:100%; position: relative;  overflow:hidden;}
+
+/* 헤더공통 */
+/* 높이(height)를 없앰 → 안에 들어있는 로고와 버튼의 크기에 맞춰 자동으로 정해짐 */
+#headerArea{background:rgba(255,255,255,.8);
+   width: 100%; position: fixed; left:0; top:0;
+   z-index: 100;}
+#headerArea .header_top{display: flex; justify-content: space-between;
+        align-items: center; padding: 0 15px;}
+/* 로고: position+z-index 로 메뉴(흰 판) 위에도 보이게 함 */
+#headerArea h1{position: relative; z-index: 30; width: 40%;}
+#headerArea h1 a{padding: 8px 0;}
+#headerArea .logo a, #headerArea .logo img {
+    display: block;
+    width: 182px;
+    height: auto;
+}
+
+
+
+
+
+/* 햄버거 버튼 (CodePen "Flippin' burgers" by Mikael Ainalem 의 ham4 사용) */
+#headerArea .menu_ham {
+    display: block;
+    width: 60px; /* 약 47px → 터치영역 확보 */
+    position: relative;
+    z-index:30; 
+}
+#headerArea .menu_ham svg{
+    display: block;
+    width: 100%; /* 버튼 폭에 맞춰 그림(SVG)이 늘어남. 높이는 viewBox 비율(1:1)로 자동 */
+    height: auto;
+}
+.ham {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent; /* 터치할 때 생기는 파란 네모 없앰 */
+  transition: transform 400ms;
+  user-select: none;
+}
+.hamRotate.active {
+  transform: rotate(45deg); /* 열리면 그림 전체가 45도 돎 */
+}
+.line {
+  fill: none; /* 선 안쪽은 색칠 안 함 */
+  transition: stroke-dasharray 400ms, stroke-dashoffset 400ms; /* 점선 모양이 변하면서 선이 움직이는 것처럼 보임 */
+  stroke: var(--color-font1); /* 선 색 */
+  stroke-width: 5.5; /* 선 두께 */
+  stroke-linecap: round; /* 선 끝을 둥글게 */
+}
+/* ham4 : 선을 '점선처럼' 잘라서(dasharray) 위치를 밀어(dashoffset) 모양을 바꿈 */
+.ham4 .top {
+  stroke-dasharray: 40 121;
+}
+.ham4 .bottom {
+  stroke-dasharray: 40 121;
+}
+.ham4.active .top {
+  stroke-dashoffset: -68px;
+}
+.ham4.active .bottom {
+  stroke-dashoffset: -68px;
+}
+
+/* nav 영역 (시안: 화면 전체 폭의 흰 판) */
+#headerArea .modal{position: fixed;width: 100%; height: 100%;
+          left:0; top:0; z-index:10; background: rgba(0,0,0,.8); display: none;}
+#headerArea #gnb{position: absolute; width:100%;  right:-100%; top:0; 
+    opacity: 0; background: #fff;z-index:20 }
+
+/* 1depth : 왼쪽에 빨간 세로줄 + 제목 + 오른쪽 화살표 */
+#headerArea #gnb .mainMenu{margin-top: 70px;}
+#headerArea #gnb .depth1{padding-top: 16px;}
+#headerArea #gnb .depth1 h3 a{display: flex; 
+                  justify-content:space-between; 
+                  align-items: center; 
+                  margin: 0 14px 6px;
+                  padding: 5px 0 5px 10px;
+                  border-left: 2px solid var(--color-main); /* 빨간 세로줄 */
+                  font-size: var(--font-18-size); font-weight: 700;}
+/* 2depth : 연한 빨강(메인색 투명도 8%) 배경 */
+#headerArea #gnb .depth1 ul{background:rgba(222,39,24,.08); display: none}
+#headerArea #gnb .depth1 ul a{padding: 10px 29px; font-size: var(--font-16-size); font-weight: 500;}
+
+/* 로그인 / 회원가입 */
+#headerArea #gnb .util{display: flex; margin: 20px 0 0 14px; justify-content: flex-end;}
+#headerArea #gnb .util li{margin-right: 20px;} /* 두 글자 사이 간격 */
+#headerArea #gnb .util a{padding: 12px 0; font-size: var(--font-14-size); white-space: nowrap; font-weight: 600;} /* nowrap: 글자가 두 줄로 꺾이지 않게 */
+
+/* SNS 버튼 4개 : 흰 사각 + 그림자, 오른쪽 정렬 */
+#headerArea #gnb .sns{display: flex; justify-content: flex-end; margin: 30px 14px 19px 0; gap: 10px;}
+#headerArea #gnb .sns li{width: 15%;}
+#headerArea #gnb .sns li .svg-inline--fa{font-size: 1.8rem;}
+#headerArea #gnb .sns a{padding: 12px 0; text-align: center; background: #fff;
+          box-shadow: var(--box-shadow1); border-radius: 10px;
+          font-size: var(--font-18-size); color: var(--color-font1);}
+#headerArea #gnb .sns li:first-child a{color: var(--color-main);}
+
+/* 푸터공통 */
+/* 높이/검정배경을 없앰 → 안의 내용에 맞춰 자동으로, 흰 배경(시안) */
+#footerArea{padding: 26px 14px 19px; background: #fff; border-top: 1px solid #ccc;
+          background: #f8f8f8;}
+/* TOP 버튼: 가로·세로 모두 45px 로 고정한 원형 (화면 크기가 바뀌어도 모양이 안 찌그러짐) */
+#footerArea .top_move{
+    width: 45px; height: 45px; background: #fff; box-shadow: var(--box-shadow1);
+    border-radius: 50%; position: fixed; right: 10px; bottom: 30px;
+    text-align: center; z-index: 90;
+    display: none;
+}
+#footerArea .top_move span{display:block; padding: 0; line-height: 45px; font-weight: 600; font-size: var(--font-12-size);}
+#footerArea .footer_logo img{width:180px; height: auto; margin-bottom: 15px;}
+#footerArea address{margin: 13px 0; font-size: var(--font-12-size); color: var(--color-font2); line-height: 2; margin-bottom: 15px;}
+/* family site 버튼 : 빨간 테두리, 가로 꽉 채움 */
+#footerArea .family{margin-bottom: 20px;}
+#footerArea .family summary{display: block; padding: 9px 0; text-align: center; cursor: pointer;
+    border: 1px solid var(--color-main); border-radius: 10px; background: #fff;
+    font-size: var(--font-12-size); color: var(--color-font1);
+    list-style: none;} /* list-style:none → 기본 삼각형 없앰 */
+#footerArea .family summary::-webkit-details-marker{display: none;} /* 사파리·크롬 삼각형 없앰 */
+#footerArea .family ul{margin-top: 5px; border: 1px solid var(--color-sub1); border-radius: 10px;}
+#footerArea .family ul a{padding: 10px 14px; font-size: var(--font-12-size);}
+/* 정책 링크 : 한 줄로 가운데 정렬, 첫번째만 빨강 */
+#footerArea .policy{display: flex; justify-content: space-evenly; margin-top: 9px;}
+#footerArea .policy a{padding: 12px 0; font-size: var(--font-14-size); white-space: nowrap; margin-bottom: 15px; font-weight: 600} /* nowrap: 글자가 두 줄로 꺾이지 않게 */
+#footerArea .policy li:first-child a{color: var(--color-main); font-weight: 800;}
+#footerArea .copy{text-align: center; font-size: var(--font-12-size); color: var(--color-font3);}
+
+/* ===== AOS 모바일용 (모든 페이지 공통) ===== */
+[data-aos="fade-up"]      { transform: translate3d(0, 20px, 0); }
+[data-aos="fade-right"]   { transform: translate3d(-20px, 0, 0); }
+[data-aos="fade-left"]    { transform: translate3d(20px, 0, 0); }
+[data-aos="zoom-in"]      { transform: scale(.92); }
+[data-aos="zoom-in-up"]   { transform: translate3d(0, 20px, 0) scale(.92); }
+/* ===== AOS 끝 ===== */

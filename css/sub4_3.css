@@ -1,0 +1,213 @@
+@charset "UTF-8";
+
+.content_area {
+    padding: 50px 10px 60px;
+}
+
+
+/* ---------- 공통 소제목 h3 (빨간 세로막대) ---------- */
+.content_area h3 {
+    margin-bottom: 30px;
+    padding-left: 10px;
+    border-left: 3px solid var(--color-main);
+    font-size: var(--font-18-size);
+    font-weight: 700;
+    line-height: 1.25;
+}
+/* section + section : 앞에 section이 있는 section(= 두 번째부터)만 골라서 위쪽 간격을 준다 */
+.content_area section + section {
+    margin-top: 45px;
+}
+
+
+/* ---------- 수수료 (부담 원칙 / 비용 구분) ---------- */
+.content_area .fee ul {
+    padding: 17px 16px 19px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
+    background: #fff;
+}
+.content_area .fee li {
+    font-size: var(--font-14-size);
+    line-height: 1.65;
+    color: #333;
+}
+.content_area .fee li + li {
+    margin-top: 13px;
+    padding-top: 13px;
+    border-top: 1px solid #eee;
+}
+/* span 은 원래 글자 옆에 붙지만 display: block 을 주면 한 줄을 다 차지해서 아래 내용이 다음 줄로 내려간다 */
+.content_area .fee li span {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 700;
+    color: var(--color-main);
+}
+
+/* 분홍 안내 박스 + 빨간 버튼 */
+.content_area .fee > div {
+    margin-top: 12px;
+    padding: 16px 15px 17px;
+    border-radius: 3px;
+    background: #FCE9E7;
+}
+.content_area .fee > div p {
+    font-size: var(--font-14-size);
+    line-height: 1.7;
+    color: #444;
+}
+/* display: flex + justify-content: center 로 글자와 화살표를 가운데에 나란히 놓는다 */
+.content_area .fee > div a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 42px;
+    margin-top: 13px;
+    border-radius: 21px;
+    background: var(--color-main);
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+}
+
+
+/* ---------- 비용 감면 대상 (카드 3개) ---------- */
+.content_area .subject li {
+    border: 1px solid #f3cfcb;
+    border-top: 2px solid var(--color-main);   /* 위쪽만 빨갛고 두껍게 */
+    border-radius: 3px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    background: #fff;
+}
+/* li + li : 앞에 li가 있는 li(= 두 번째 카드부터)만 골라서 위쪽 간격을 준다 */
+.content_area .subject li + li {
+    margin-top: 11px;
+}
+.content_area .subject dl {
+    margin: 0;
+    padding: 16px 16px 18px;
+}
+.content_area .subject dt {
+    font-size: var(--font-16-size);
+    font-weight: 700;
+    color: var(--color-main);
+}
+.content_area .subject dd {
+    margin: 7px 0 0;
+    font-size: var(--font-14-size);
+    line-height: 1.7;
+    color: #444;
+}
+
+
+/* ---------- 공개 대상별 수수료 (눌러서 열리는 details / summary) ---------- */
+.content_area .charge_list details {
+    border: 1px solid #f3cfcb;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    background: #fff;
+    overflow: hidden;
+}
+/* details + details : 두 번째 묶음부터 위쪽 간격 */
+.content_area .charge_list details + details {
+    margin-top: 8px;
+}
+
+/* 눌러서 열고 닫는 분홍 제목 부분 */
+.content_area .charge_list summary {
+    position: relative;             /* 오른쪽 화살표(::after)를 summary 안에서 위치시키기 위해 */
+    padding: 14px 38px 14px 15px;   /* 오른쪽은 화살표 자리를 비워둔다 */
+    background: #FCE9E7;
+    list-style: none;               /* 브라우저 기본 삼각형 숨기기 */
+    font-size: 15px;
+    font-weight: 700;
+    color: #222;
+    cursor: pointer;
+}
+/* 사파리(아이폰)는 위 list-style만으로 안 없어져서 따로 숨긴다 */
+.content_area .charge_list summary::-webkit-details-marker {
+    display: none;
+}
+/* 오른쪽 화살표 : 글자가 아니라 테두리 두 줄(오른쪽, 아래)로 ㄱ 모양을 만들고 돌려서 ∨ 로 만든다 */
+.content_area .charge_list summary::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    width: 7px;
+    height: 7px;
+    margin-top: -5px;
+    border-right: 2px solid var(--color-main);
+    border-bottom: 2px solid var(--color-main);
+    transform: rotate(45deg);       /* 45도 돌리면 ∨ 모양 */
+}
+/* details 에 open 이 붙으면(열렸을 때) 화살표를 ∧ 로 뒤집는다 */
+.content_area .charge_list details[open] summary::after {
+    margin-top: -1px;               /* 돌렸을 때 눈으로 가운데로 보이게 위치 보정 */
+    transform: rotate(-135deg);     /* -135도 돌리면 ∧ 모양 */
+}
+
+/* 열렸을 때 보이는 안쪽 내용 */
+.content_area .charge_body {
+    padding: 15px 15px 17px;
+}
+/* div + div : 두 번째 구분부터 위쪽에 점선을 긋고 간격을 준다 */
+.content_area .charge_body > div + div {
+    margin-top: 13px;
+    padding-top: 13px;
+    border-top: 1px dashed #ddd;
+}
+/* h4 : 구분 이름표 (검은 배경 흰 글자). inline-block 이라 글자 길이만큼만 배경이 칠해진다 */
+.content_area .charge_body h4 {
+    display: inline-block;
+    margin-bottom: 7px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    background: #2a2a33;
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+}
+.content_area .charge_body strong {
+    display: block;
+    font-size: var(--font-14-size);
+    font-weight: 700;
+    color: var(--color-main);
+}
+/* ul + strong : 앞에 목록(ul)이 있는 strong(= 두 번째 소제목)만 위쪽 간격 */
+.content_area .charge_body ul + strong {
+    margin-top: 10px;
+}
+.content_area .charge_body ul {
+    margin-top: 3px;
+}
+.content_area .charge_body li {
+    font-size: var(--font-14-size);
+    line-height: 1.6;
+    color: #333;
+}
+.content_area .charge_body li + li {
+    margin-top: 3px;
+}
+/* ul + p : 목록 바로 뒤의 p(= ※ 매체비용 별도)는 회색 */
+.content_area .charge_body ul + p {
+    margin-top: 6px;
+    font-size: var(--font-14-size);
+    color: #777;
+}
+/* h4 + p : 이름표 바로 뒤의 p(= 상동)는 보통 글자색 */
+.content_area .charge_body h4 + p {
+    font-size: var(--font-14-size);
+    color: #333;
+}
+
+
+/* ---------- 탭(sub_menu) 3개 너비 보정 ----------
+   탭이 3개인데 한 칸이 25%라서 오른쪽이 비어 보이는 문제를 막는다.
+   (sub_common.css 는 건드리지 않고 이 파일에서 덮어쓴다) */
+.sub_menu ul li {
+    width: 33.33%;
+}

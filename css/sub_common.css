@@ -1,0 +1,57 @@
+.visual{width: 100%; height: 250px;}
+.visual img{width: 100%; height: 100%; object-fit: cover; object-position: center;}
+.sub_menu ul{display: flex; border-bottom: 1px solid #ccc; }
+.sub_menu ul li{width: 25%; position: relative;} /* 3개면 33.33% */
+.sub_menu ul li::after{content: ''; display: block; width: 1px; height:20px; background: #ccc;
+                       position: absolute; right: 0; top: 15px; z-index: -1;}
+.sub_menu ul li:last-child::after{content: ''; display: none;}
+.sub_menu ul li a{font-size: var(--font-16-size); text-align: center; font-weight: 600; padding: 12px 0;}
+/* 현재 페이지(.active)와 눌렀을 때(:active) 빨간 네모 칸 (시안: 모서리 둥글지 않음) */
+.sub_menu ul li a.active,
+.sub_menu ul li a:active{background: var(--color-main); color: #fff;}
+
+/* 경로 (HOME > 기관소개 > 인사말) */
+.breadcrumb{
+    margin: 15px 6% 0;
+    text-align: right;
+    font-size: var(--font-12-size);
+    color: var(--color-font3);
+}
+.breadcrumb strong{
+    font-weight: 700;
+    color: var(--color-main);                   /* 마지막 '인사말'만 빨강 */
+}
+
+/* 제목 영역 */
+.title_area{
+    padding-top: 35px;
+    text-align: center;
+}
+.title_area .eng{
+    font-size: var(--font-16-size);
+    font-weight: 400;
+    color: var(--color-main);
+}
+.title_area h2{
+    margin-bottom:22px;
+    font-size:2.5rem;
+    font-weight: 700;
+    color: var(--color-point2);
+}
+.title_area h2 + p{                              /* h2 바로 다음 p = 슬로건 */
+    margin: 0 3%;
+    font-size: var(--font-16-size);
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--color-font1);
+    word-break: break-all;                       /* 글자 단위로 줄바꿈 */
+}
+/* 슬로건 아래 빨간 세로줄 (장식이라 HTML 에 안 넣고 CSS 로 그림) */
+.title_area::after{
+    content: "";
+    display: block;
+    width: 1px;
+    height: 20px;
+    margin: 30px auto 0;
+    background: var(--color-main);
+}

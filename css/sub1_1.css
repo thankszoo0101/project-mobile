@@ -1,0 +1,65 @@
+@charset "UTF-8";
+/* sub1_1 인사말 콘텐츠 */
+
+/* 본문 영역 */
+.content_area{
+    padding: 50px 10px 60px;                    /* 위 50px / 좌우 10px / 아래 60px (푸터와 간격) */
+    text-align: center;
+}
+.content_area h3{
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: var(--color-font1);
+    word-break: break-all;
+    margin-bottom: 40px;
+}
+.content_area h3 span{
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-main);                   /* '한국디자인진흥원' 빨간 굵은 글자 */
+}
+
+/* 원장님 사진 */
+.content_area .photo{
+    width: 46%;                                 /* 가로만 % 로 정하고 */
+    margin: 15px auto 0;                        /* 높이는 사진 비율(296:372)에 맞춰 자동 */
+}
+.content_area .photo img{
+    display: block;
+    width: 100%;
+    height: auto;                               /* 사진이 눌리거나 잘리지 않게 자동 */
+    border-radius: 6px;
+}
+
+/* 인사말 본문 */
+.content_area .text{
+    width: 94%;
+    margin: 35px auto 0;
+}
+.content_area .text p{
+    margin-bottom: 20px;                        /* 문단 사이 간격 */
+    font-size: var(--font-14-size);
+    line-height: 1.6;
+    color: var(--color-font1);
+    word-break: break-all;
+    text-align: justify;
+}
+.content_area .text p:last-child{
+    margin-bottom: 0;                           /* 마지막 '감사합니다.' 아래는 간격 없음 */
+}
+
+/* 서명 : 한국디자인진흥원장 / 강 윤 주 */
+.content_area .signature{
+    margin-top: 35px;
+    font-size: var(--font-16-size);
+    font-weight: 500;
+    color: var(--color-font1);
+}
+.content_area .signature strong{
+    display: block;                             /* 이름을 아랫줄로 */
+    margin-top: 4px;
+    padding-left: 0.6em;                        /* 글자 사이를 벌리면 오른쪽이 비어서 왼쪽에도 똑같이 채워 가운데 맞춤 */
+    letter-spacing: 0.6em;                      /* 강 윤 주 처럼 글자 사이 벌리기 */
+    font-weight: 700;
+    font-size: 1.5rem;
+}

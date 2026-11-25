@@ -1,0 +1,253 @@
+@charset "UTF-8";
+
+.content_area {
+    padding: 50px 10px 60px;
+}
+
+
+/* ---------- 공통 소제목 h3 (빨간 세로막대) ---------- */
+.content_area h3 {
+    margin-bottom: 30px;
+    padding-left: 10px;
+    border-left: 3px solid var(--color-main);
+    font-size: var(--font-18-size);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+
+/* ---------- 안전보건 경영방침 박스 ---------- */
+.content_area .policy {
+    padding: 22px 18px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.14);
+    background: #fff;
+}
+/* 박스 안 제목은 빨간 막대 없이 굵은 글씨만 (위의 공통 h3 모양을 덮어쓴다) */
+.content_area .policy h3 {
+    margin-bottom: 0;
+    padding-left: 0;
+    border-left: 0;
+    line-height: 1.45;
+}
+.content_area .policy p {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid #eee;
+    font-size: var(--font-14-size);
+    line-height: 1.8;
+    color: #333;
+}
+/* linear-gradient : 색이 위에서 아래로 변하는 배경.
+   transparent 58% 까지는 투명, 그 아래만 분홍색이라 글자 아래쪽에 형광펜을 칠한 것처럼 보인다 */
+.content_area .policy span {
+    background: linear-gradient(transparent 58%, #F8CFCB 58%);
+}
+
+
+/* ---------- 안전보건 경영 목표 (카드 4개) ---------- */
+.content_area .goal {
+    margin-top: 45px;
+}
+.content_area .goal > p {
+    margin-bottom: 22px;
+    text-align: center;
+    font-size: var(--font-16-size);
+    line-height: 1.5;
+}
+.content_area .goal > p strong {
+    font-weight: 700;
+    color: var(--color-main);
+}
+.content_area .goal_list li {
+    padding: 17px 15px 18px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    background: #fff;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
+}
+/* li + li : 앞에 li가 있는 li(= 두 번째 카드부터)만 골라서 위쪽 간격을 준다 */
+.content_area .goal_list li + li {
+    margin-top: 12px;
+}
+.content_area .goal_list dl {
+    margin: 0;
+}
+/* display: flex 로 동그라미 아이콘과 제목을 가로로 나란히 놓고, align-items: center 로 세로 가운데를 맞춘다 */
+.content_area .goal_list dt {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-size: var(--font-16-size);
+    font-weight: 700;
+    line-height: 1.4;
+}
+.content_area .goal_list dt i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;                 /* 제목이 길어도 동그라미가 찌그러지지 않게 */
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #F6D5D2;
+    font-size: 23px;
+    color: var(--color-main);
+}
+.content_area .goal_list dd {
+    margin: 12px 0 0;
+    font-size: var(--font-14-size);
+    line-height: 1.7;
+    color: #444;
+}
+
+
+/* ---------- 날짜 + 원장 이름 + 사인 ---------- */
+.content_area .sign_area {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+.content_area .sign_area p {
+    font-size: var(--font-14-size);
+    color: #333;
+}
+.content_area .sign_area p + p {
+    margin-top: 7px;
+    font-size: var(--font-16-size);
+    font-weight: 700;
+    color: #222;
+}
+.content_area .sign_area img {
+    width: 55px;                    /* 사인 이미지 파일은 110px 로 만들고 보여줄 때는 절반 */
+    height: auto;
+    margin-left: 8px;
+    vertical-align: middle;         /* 글자와 사인 높이를 가운데로 맞춘다 */
+}
+
+
+/* ---------- ISO 45001 인증 현황 ---------- */
+.content_area .iso {
+    margin-top: 45px;
+}
+.content_area .iso h3 {
+    line-height: 1.35;
+}
+.content_area .iso_table {
+    width: 100%;
+    border-collapse: collapse;      /* 칸 사이 테두리를 한 줄로 합친다 */
+}
+.content_area .iso_table th,
+.content_area .iso_table td {
+    padding: 12px 5px;
+    border-bottom: 1px solid #ddd;
+    font-size: var(--font-14-size);
+}
+.content_area .iso_table th {
+    text-align: left;
+    font-weight: 400;
+    color: #333;
+    white-space: nowrap;            /* 왼쪽 제목이 두 줄로 안 꺾이게 */
+}
+.content_area .iso_table td {
+    text-align: right;
+    font-weight: 700;
+}
+
+/* 인증서 2장 나란히 + 확대보기 버튼 */
+.content_area .cert_list {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+.content_area .cert_list li {
+    width: 48.5%;
+}
+.content_area .cert_list img {
+    display: block;
+    box-sizing: border-box;         /* 테두리 두께를 width 100% 안에 포함시킨다 */
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+}
+.content_area .zoom_btn {
+    display: block;
+    margin-top: 10px;
+    height: 36px;
+    line-height: 34px;
+    border: 1px solid #ccc;
+    border-radius: 18px;
+    background: #fff;
+    text-align: center;
+    font-size: var(--font-14-size);
+    color: #222;
+}
+
+
+/* ---------- 확대보기 팝업 (.content_area 밖에 있어서 앞에 붙이지 않는다) ---------- */
+/* position: fixed : 스크롤해도 화면에 딱 붙어 있다. top/left 0 + width/height 100% 로 화면 전체를 덮는다
+   z-index : 숫자가 클수록 위에 겹친다. 헤더보다 위에 오도록 크게 줬다
+   display: none : 처음에는 숨기고, JS(fadeIn)가 눌렀을 때 보이게 한다 */
+.cert_modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);     /* 검정을 70%만 보이게(반투명) */
+    z-index: 10000;
+}
+/* top: 50%, left: 50% 는 팝업의 왼쪽 위 모서리를 화면 가운데에 놓는다.
+   transform: translate(-50%, -50%) 는 팝업 자기 크기의 반만큼 왼쪽, 위로 되돌려서 정확히 가운데로 만든다 */
+.cert_popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 86%;
+    max-height: 90%;
+    padding: 15px;
+    box-sizing: border-box;
+    overflow-y: auto;                   /* 화면보다 길면 팝업 안에서 스크롤 */
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 6px;
+    text-align: center;
+    z-index: 10001;
+}
+.cert_popup img {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+}
+.cert_popup p {
+    margin-top: 12px;
+    font-size: var(--font-14-size);
+    font-weight: 700;
+    color: #222;
+}
+.cert_close {
+    display: block;
+    margin-top: 14px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 20px;
+    background: var(--color-main);
+    text-align: center;
+    font-size: var(--font-14-size);
+    font-weight: 700;
+    color: #fff;
+}
+
+
+/* ---------- 탭(sub_menu) 3개 너비 보정 ----------
+   탭이 3개인데 한 칸이 25%라서 오른쪽이 비어 보이는 문제를 막는다.
+   (sub_common.css 는 건드리지 않고 이 파일에서 덮어쓴다) */
+.sub_menu ul li {
+    width: 33.33%;
+}
